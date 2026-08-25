@@ -12,8 +12,15 @@
 - 支持 16 个环视方向
 - 工作状态会出现追逐黄色蝴蝶的动作
 - 检查状态会转身弯腰，再从两腿之间倒着探头
+- 失败状态采用身体互换篇中的“乌萨奇身体里的吉伊卡哇”，会胆怯地缩手、含泪并轻轻吸鼻子
 - 侧面和背面采用更圆润的轮廓，不使用细长的豆形身体
 - 保持睁眼、暖黄色身体、深棕色线条和粉色腮红
+
+## 失败动作
+
+`failed` 状态参考身体互换篇第 207—208 话：外形仍是乌萨奇，但表情和动作换成吉伊卡哇的胆怯反应。8 帧始终睁眼、保持直耳，从不安站立逐渐变为双手收在胸前、眼眶含泪，最后轻轻吸鼻子。
+
+![乌萨奇身体里的吉伊卡哇](assets/failed-action.gif)
 
 ## 检查动作
 
@@ -49,6 +56,7 @@ codex-usagi-pet/
 ├── spritesheet.webp
 └── assets/
     ├── contact-sheet.png
+    ├── failed-action.gif
     ├── review-action.gif
     └── special-actions.png
 ```
@@ -56,6 +64,7 @@ codex-usagi-pet/
 - `pet.json`：桌宠名称、说明与 v2 格式声明。
 - `spritesheet.webp`：可直接安装的透明动态精灵图，尺寸为 1536 × 2288。
 - `assets/contact-sheet.png`：全部动作与环视方向总览。
+- `assets/failed-action.gif`：失败状态的 8 帧身体互换动作预览。
 - `assets/review-action.gif`：检查状态的 6 帧动作预览。
 - `assets/special-actions.png`：草裙与夹子动作设计展示。
 
