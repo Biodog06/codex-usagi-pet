@@ -11,8 +11,15 @@
 - 包含待机、左右移动、挥手、跳跃、失败、等待、工作和检查动作
 - 支持 16 个环视方向
 - 工作状态会出现追逐黄色蝴蝶的动作
+- 检查状态会转身弯腰，再从两腿之间倒着探头
 - 侧面和背面采用更圆润的轮廓，不使用细长的豆形身体
 - 保持睁眼、暖黄色身体、深棕色线条和粉色腮红
+
+## 检查动作
+
+`review` 状态采用第 80 话拍照场景中的搞怪动作：先正面停顿，随后快速转身弯腰，最后倒着从两腿之间探头。
+
+![乌萨奇转身倒着探头](assets/review-action.gif)
 
 ## 特别动作设计
 
@@ -42,15 +49,16 @@ codex-usagi-pet/
 ├── spritesheet.webp
 └── assets/
     ├── contact-sheet.png
+    ├── review-action.gif
     └── special-actions.png
 ```
 
 - `pet.json`：桌宠名称、说明与 v2 格式声明。
 - `spritesheet.webp`：可直接安装的透明动态精灵图，尺寸为 1536 × 2288。
 - `assets/contact-sheet.png`：全部动作与环视方向总览。
+- `assets/review-action.gif`：检查状态的 6 帧动作预览。
 - `assets/special-actions.png`：草裙与夹子动作设计展示。
 
 ## 说明
 
 这是由 Biodog06 与 Codex 共同调整的非官方同人桌宠，仅供个人学习与非商业使用。乌萨奇及相关角色版权归原作者 Nagano 与相关权利方所有，本仓库与官方无关。
-
