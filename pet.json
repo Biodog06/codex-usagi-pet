@@ -1,7 +1,7 @@
 {
   "id": "usagi",
   "displayName": "乌萨奇",
-  "description": "普通待机为主，工作时追逐蝴蝶，检查完成后会快速转身弯腰并从两腿之间倒着探头；失败时会变成乌萨奇身体里的吉伊卡哇，缩手含泪。",
+  "description": "普通待机时会偶尔出现草裙抱胸或夹子彩蛋；工作时追逐蝴蝶，检查完成后会快速转身弯腰并从两腿之间倒着探头；失败时会变成乌萨奇身体里的吉伊卡哇。",
   "spriteVersionNumber": 2,
-  "spritesheetPath": "spritesheet.webp"
+  "spritesheetPath": "spritesheet.png"
 }

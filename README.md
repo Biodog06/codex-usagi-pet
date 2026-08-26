@@ -7,12 +7,13 @@
 ## 主要特点
 
 - 使用 Codex Desktop v2 桌宠格式
-- 1536 × 2288 透明 WebP 精灵图
+- 1536 × 2288 透明 APNG 动画精灵图
 - 8 × 11 布局，共 88 个标准格位
 - 包含待机、左右移动、挥手、跳跃、失败、等待、工作和检查状态
 - 支持 16 个环视方向
 - 正面、侧面和背面均保持圆润轮廓
 - 动画始终使用暖黄色身体、深棕色线条和粉色腮红
+- 普通待机时会不定时触发草裙抱胸或夹子彩蛋
 
 ## 特别动作
 
@@ -34,7 +35,11 @@
 
 ### 草裙与夹子
 
-草裙抱胸动作与连贯夹子动作的设计稿：
+乌萨奇处于普通待机状态时，会在长短不一的间隔里偶尔出现草裙抱胸或夹子动作。每次只短暂播放其中一组，随后恢复原来的摇晃待机；回答、等待、`failed` 和 `review` 等状态不受影响。
+
+![草裙与夹子待机彩蛋](assets/idle-easter-eggs.gif)
+
+两组动作原画：
 
 ![草裙与夹子动作设计](assets/special-actions.png)
 
@@ -54,7 +59,8 @@ cd codex-usagi-pet
 
 pet_target="$HOME/.codex/pets/usagi"
 mkdir -p "$pet_target"
-cp ./pet.json ./spritesheet.webp "$pet_target/"
+rm -f "$pet_target/spritesheet.webp"
+cp ./pet.json ./spritesheet.png "$pet_target/"
 ```
 
 安装位置：
@@ -73,7 +79,8 @@ Set-Location .\codex-usagi-pet
 
 $PetTarget = Join-Path $env:USERPROFILE ".codex\pets\usagi"
 New-Item -ItemType Directory -Force -Path $PetTarget | Out-Null
-Copy-Item -Path .\pet.json, .\spritesheet.webp -Destination $PetTarget -Force
+Remove-Item -Path (Join-Path $PetTarget "spritesheet.webp") -Force -ErrorAction SilentlyContinue
+Copy-Item -Path .\pet.json, .\spritesheet.png -Destination $PetTarget -Force
 ```
 
 安装位置：
@@ -86,7 +93,7 @@ Copy-Item -Path .\pet.json, .\spritesheet.webp -Destination $PetTarget -Force
 
 1. 在 GitHub 仓库页面选择 **Code → Download ZIP**。
 2. 解压 ZIP。
-3. 将 `pet.json` 和 `spritesheet.webp` 一起复制到对应系统的 `usagi` 目录：
+3. 将 `pet.json` 和 `spritesheet.png` 一起复制到对应系统的 `usagi` 目录：
 
 ```text
 macOS:   ~/.codex/pets/usagi
@@ -98,7 +105,7 @@ Windows: %USERPROFILE%\.codex\pets\usagi
 ```text
 usagi/
 ├── pet.json
-└── spritesheet.webp
+└── spritesheet.png
 ```
 
 ## 在 Codex 中启用
@@ -120,7 +127,8 @@ git pull
 
 pet_target="$HOME/.codex/pets/usagi"
 mkdir -p "$pet_target"
-cp ./pet.json ./spritesheet.webp "$pet_target/"
+rm -f "$pet_target/spritesheet.webp"
+cp ./pet.json ./spritesheet.png "$pet_target/"
 ```
 
 ### Windows PowerShell
@@ -132,7 +140,8 @@ git pull
 
 $PetTarget = Join-Path $env:USERPROFILE ".codex\pets\usagi"
 New-Item -ItemType Directory -Force -Path $PetTarget | Out-Null
-Copy-Item -Path .\pet.json, .\spritesheet.webp -Destination $PetTarget -Force
+Remove-Item -Path (Join-Path $PetTarget "spritesheet.webp") -Force -ErrorAction SilentlyContinue
+Copy-Item -Path .\pet.json, .\spritesheet.png -Destination $PetTarget -Force
 ```
 
 更新后重新选择“乌萨奇”，或重启 Codex Desktop。
@@ -163,22 +172,27 @@ Remove-Item -Path $PetTarget -Recurse -Force
 codex-usagi-pet/
 ├── README.md
 ├── pet.json
-├── spritesheet.webp
-└── assets/
-    ├── contact-sheet.png
-    ├── failed-action.gif
-    ├── review-action.gif
-    └── special-actions.png
+├── spritesheet.png
+├── assets/
+│   ├── contact-sheet.png
+│   ├── failed-action.gif
+│   ├── idle-easter-eggs.gif
+│   ├── review-action.gif
+│   └── special-actions.png
+└── tools/
+    └── build_idle_easter_eggs.py
 ```
 
 | 文件 | 用途 |
 | --- | --- |
 | `pet.json` | 桌宠名称、说明、v2 版本及精灵图路径 |
-| `spritesheet.webp` | 可直接安装的透明动画精灵图 |
+| `spritesheet.png` | 可直接安装的透明 APNG 动画精灵图 |
 | `assets/contact-sheet.png` | 全部动作及环视方向总览 |
 | `assets/failed-action.gif` | 身体互换失败动作预览 |
+| `assets/idle-easter-eggs.gif` | 草裙与夹子待机彩蛋预览 |
 | `assets/review-action.gif` | 拍照搞怪检查动作预览 |
-| `assets/special-actions.png` | 草裙与夹子动作设计稿 |
+| `assets/special-actions.png` | 草裙与夹子动作原画 |
+| `tools/build_idle_easter_eggs.py` | 用两组原画重建不定时待机彩蛋图集 |
 
 ## 格式信息
 
@@ -189,7 +203,7 @@ codex-usagi-pet/
 | 图集尺寸 | 1536 × 2288 |
 | 单格尺寸 | 192 × 208 |
 | 图集布局 | 8 列 × 11 行 |
-| 图像格式 | 透明 WebP |
+| 图像格式 | 透明 APNG |
 
 ## 版权说明
 
